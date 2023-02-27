@@ -7,7 +7,7 @@ class Note:
 
     def __init__(self, title_text, text_text):
         Note.id += 1
-        self.id = id
+        self.id = Note.id
         self.date = datetime.now().strftime("%d.%m.%y %H:%M:%S")
         self.title = title_text
         self.text = text_text

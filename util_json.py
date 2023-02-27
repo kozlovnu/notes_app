@@ -8,10 +8,10 @@ def save_file(data):
         temporary_data = []
     temporary_data.append(data)
     with open('notes.json', 'w', encoding='utf-8') as file:
-        json.dump(temporary_data, file, indent=2, ensure_ascii=False)
+        json.dump(temporary_data, file, indent=2)
 
 
-def load_file(file='data.json'):
+def load_file(file='notes.json'):
     with open(f'{file}', 'r', encoding='utf-8') as json_file:
         data = json.load(json_file)
         result = []

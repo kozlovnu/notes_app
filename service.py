@@ -1,6 +1,5 @@
 from util_json import *
 from model import Note
-import view
 
 
 def get_all_notes():
