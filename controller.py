@@ -12,26 +12,26 @@ def start():
                        f'- Enter "{comands[3]}" to modify note\n'
                        f'- Enter "{comands[4]}" to delete note\n'
                        f'- Enter "{comands[5]}" to exit app\n')
-        try:
-            if comand == 'exit':
-                print('Thank you for using notes app')
-                break
-            elif comand == 'create':
-                note = set_note()
-                save_data(note)
-                print('Note was created')
+        # try:
+        if comand == 'exit':
+            print('Thank you for using notes app')
+            break
+        elif comand == 'create':
+            note = set_note()
+            save_data(note)
+            print('Note was created')
 
-            elif comand == 'showlist':
-                get_all_notes()
+        elif comand == 'showlist':
+            get_all_notes()
 
-            elif comand == 'edit':
-                modify_note()
+        elif comand == 'edit':
+            modify_note()
 
-            elif comand == 'delete':
-                delete_note()
-            elif comand == 'find':
-                search_note()
+        elif comand == 'delete':
+            delete_note()
+        elif comand == 'find':
+            search_note()
 
 
-        except:
-            print('Error. Try again')
+        # except:
+        #     print('Error. Try again')
