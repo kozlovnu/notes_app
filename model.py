@@ -6,9 +6,9 @@ class Note:
     id = 0
 
     def __init__(self, title_text, text_text):
-        Note.id += 1
+        Note.id = int(str(uuid.uuid4().int)[0:4])
         self.id = Note.id
-        self.date = datetime.now().strftime("%d.%m.%y %H:%M:%S")
+        self.date = datetime.now().strftime("%d.%m.%y")
         self.title = title_text
         self.text = text_text
 
@@ -33,7 +33,4 @@ class Note:
     def __str__(self) -> str:
         return f"id: {self.id}\ndate: {self.date}\ntitle: {self.title}\ntext: {self.text}\n{'-' * 10}\n"
 
-    def load(self, id, date, header, text):
-        if Note.id < id:
-            Note.id = id
-        return Note(id, date, header, text)
+

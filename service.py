@@ -57,7 +57,54 @@ def modify_note():
                 'text': changed_text
             }
             print('Note was modified')
+            rewrite_file(temp)
+
+
+def delete_note():
+    temp = json.load(open('notes.json', encoding='utf-8'))
+    input_key = int(input('Enter id of note to edit: '))
+
+    for index, dict_ in enumerate(temp):
+        if 'id' in dict_ and dict_['id'] == input_key:
+            temp.remove(dict_)
+            print(f'Note id{input_key} was successfully deleted!')
+        rewrite_file(temp)
+
+
+def search_note():
+    temp = json.load(open('notes.json', encoding='utf-8'))
+    input_key = input('Search note by id, title or date of creation?\n'
+                      'enter "id" or "title" or "date": ')
+    if input_key == 'id':
+        note_id = int(input('enter id of note to find: '))
+        result = list(filter(lambda x: x['id'] == note_id, temp))
+        if not result:
+            print(f'There is no notes with id{note_id}')
+        else:
+            print_note(result)
+    elif input_key == 'title':
+        title = input('Enter title of note to find: ')
+        result = list(filter(lambda x: x['title'] == title, temp))
+        if not result:
+            print(f'There is no notes with title "{title}"')
+        else:
+            print_note(result)
+    elif input_key == 'date':
+        date = input('Enter date in the format dd.mm.yy: ')
+        result = list(filter(lambda x: x['date'] == date, temp))
+        if not result:
+            print(f'There is no notes with date "{date}"')
+        else:
+            print_note(result)
+
+
+def print_note(notes):
+    for note in notes:
+        for k, v in note.items():
+            print(k, ':', v)
+        print()
 
 
 def save_data(data):
     save_file(data)
+
