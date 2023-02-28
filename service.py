@@ -96,6 +96,8 @@ def search_note():
             print(f'There is no notes with date "{date}"')
         else:
             print_note(result)
+    else:
+        print('there is no such command')
 
 
 def print_note(notes):
@@ -107,4 +109,3 @@ def print_note(notes):
 
 def save_data(data):
     save_file(data)
-
