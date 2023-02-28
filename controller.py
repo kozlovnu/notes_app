@@ -1,37 +1,46 @@
 from service import *
 from util_json import *
+from logger import write_log
 
 
 def start():
+    write_log('started app')
     print('Welcome to notes app!\n')
-    comands = ['create', 'find', 'showlist', 'edit', 'delete', 'exit']
+    commands = ['create', 'find', 'showlist', 'edit', 'delete', 'exit']
     while True:
-        comand = input(f'- Enter "{comands[0]}" to create new note\n'
-                       f'- Enter "{comands[1]}" to search note\n'
-                       f'- Enter "{comands[2]}" to show notes list\n'
-                       f'- Enter "{comands[3]}" to modify note\n'
-                       f'- Enter "{comands[4]}" to delete note\n'
-                       f'- Enter "{comands[5]}" to exit app\n')
-        # try:
-        if comand == 'exit':
-            print('Thank you for using notes app')
-            break
-        elif comand == 'create':
-            note = set_note()
-            save_data(note)
-            print('Note was created')
+        command = input(f'- Enter "{commands[0]}" to create new note\n'
+                       f'- Enter "{commands[1]}" to search note\n'
+                       f'- Enter "{commands[2]}" to show notes list\n'
+                       f'- Enter "{commands[3]}" to modify note\n'
+                       f'- Enter "{commands[4]}" to delete note\n'
+                       f'- Enter "{commands[5]}" to exit app\n')
+        try:
+            if command == 'exit':
+                print('Thank you for using notes app')
+                write_log(command)
+                break
+            elif command == 'create':
+                note = set_note()
+                save_data(note)
+                write_log(command)
+                print('Note was created')
 
-        elif comand == 'showlist':
-            get_all_notes()
+            elif command == 'showlist':
+                get_all_notes()
+                write_log(command)
 
-        elif comand == 'edit':
-            modify_note()
+            elif command == 'edit':
+                modify_note()
+                write_log(command)
 
-        elif comand == 'delete':
-            delete_note()
-        elif comand == 'find':
-            search_note()
+            elif command == 'delete':
+                delete_note()
+                write_log(command)
+
+            elif command == 'find':
+                search_note()
+                write_log(command)
 
 
-        # except:
-        #     print('Error. Try again')
+        except:
+            print('Error. Try again')
