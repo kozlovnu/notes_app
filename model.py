@@ -3,11 +3,9 @@ from datetime import *
 
 
 class Note:
-    id = 0
 
     def __init__(self, title_text, text_text):
-        Note.id = int(str(uuid.uuid4().int)[0:4])
-        self.id = Note.id
+        self.id = int(str(uuid.uuid4().int)[0:4])
         self.date = datetime.now().strftime("%d.%m.%y")
         self.title = title_text
         self.text = text_text
@@ -32,5 +30,3 @@ class Note:
 
     def __str__(self) -> str:
         return f"id: {self.id}\ndate: {self.date}\ntitle: {self.title}\ntext: {self.text}\n{'-' * 10}\n"
-
-
