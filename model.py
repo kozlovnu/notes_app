@@ -30,10 +30,10 @@ class Note:
     def get_date(self):
         return self.date
 
-    # def get_note(self, id, date, title, text):
-    #     if Note.id_counter < id:
-    #         Note.id_counter = id
-    #     return Note(id, date, title, text)
-
     def __str__(self) -> str:
         return f"id: {self.id}\ndate: {self.date}\ntitle: {self.title}\ntext: {self.text}\n{'-' * 10}\n"
+
+    def load(self, id, date, header, text):
+        if Note.id < id:
+            Note.id = id
+        return Note(id, date, header, text)
